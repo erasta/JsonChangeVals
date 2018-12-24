@@ -1,5 +1,6 @@
 # JsonChangeVals
 Change only the values of a JSON structure.
+
 You can use this when you want to translate your JSON to another language:
 1. Put your JSON on the left pane.
 2. Copy the values on the middle pane.
