@@ -6,3 +6,18 @@ You can use this when you want to translate your JSON to another language:
 2. Copy the values on the middle pane.
 3. Translate the values on translation service such as https://translate.google.com.
 4. Get your translated JSON on the right pane.
+
+Example:
+
+Start like this:
+
+<img width='500' src='./img/trans.0.eng.png'/>
+
+Then translate to other languages the middle pane (on another application or site) and take the right pane:
+
+<img width='500' src='./img/trans.1.spa.png'/>
+
+<img width='500' src='./img/trans.2.heb.png'/>
+
+<img width='500' src='./img/trans.3.hnd.png'/>
+
