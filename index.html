@@ -1,71 +1,32 @@
 <html>
 
 <body>
-    <textarea id="origjson" style="width: 300; height: 300;" oninput="json2vals()">{a:"b", "c": {"d": "e"}}</textarea>
-    <textarea id="justvalues" style="width: 300; height: 300;" oninput="vals2json()"></textarea>
-    <textarea id="jsonwithvalues" style="width: 300; height: 300;"></textarea>
+    <table width="100%">
+        <tr>
+            <td width="33%">
+                Put your JSON here
+            </td>
+            <td width="33%">
+                See only your values, and edit them
+            </td>
+            <td width="33%">
+                Get the updated JSON with the new values here
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <textarea id="origjson" style="width: 100%; height: 500px;" oninput="json2vals()">{a:"b", "c": {"d": "e"}}</textarea>
+            </td>
+            <td>
+                <textarea id="justvalues" style="width: 100%; height: 500px;" oninput="vals2json()"></textarea>
+            </td>
+            <td>
+                <textarea id="jsonwithvalues" style="width: 100%; height: 500px;"></textarea>
+            </td>
+        </tr>
+    </table>
+    <script src="./json2vals.js"></script>
     <script>
-
-        function parse(txt) {
-            try {
-                return JSON.parse(txt);
-            } catch (error) {
-                try {
-                    var jjjj = eval('jjjj=' + txt);
-                    return jjjj;
-                } catch (error) {
-
-                }
-            }
-            return {}
-        }
-
-        function flat(obj, out) {
-            out = out || [];
-            Object.keys(obj).forEach(function (k) {
-                if (typeof obj[k] == 'object') {
-                    flat(obj[k], out);
-                } else {
-                    out.push(obj[k]);
-                }
-            });
-            return out;
-        }
-
-        function json2vals() {
-            var text = document.getElementById('origjson').value;
-            var out = ""
-            try {
-                var json = parse(text);
-                out = flat(json).join('\n');
-            } catch (error) {
-            }
-            document.getElementById('justvalues').value = out;
-        }
-
-        function flatInject(obj, vals) {
-            Object.keys(obj).forEach(function (k) {
-                if (typeof obj[k] == 'object') {
-                    flatInject(obj[k], vals);
-                } else {
-                    obj[k] = vals.shift();
-                }
-            });
-            return obj;
-        }
-
-        function vals2json() {
-            var text = document.getElementById('origjson').value;
-            var vals = document.getElementById('justvalues').value.split('\n');
-            var out = ""
-            try {
-                var json = parse(text);
-                out = flatInject(json, vals);
-            } catch (error) {
-            }
-            document.getElementById('jsonwithvalues').value = JSON.stringify(out, null, 4);
-        }
-
         json2vals();
         vals2json();
     </script>
